@@ -42,23 +42,21 @@ public class AdminGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		// Register
 		btnRegister = new JButton("Register New Member");
 		btnRegister.setBounds(120, 49, 198, 29);
 		contentPane.add(btnRegister);
-		
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegisterMemberGUI rmGUI = new RegisterMemberGUI(memberBook);
-				rmGUI.setVisible(true);
+				btn_registerMember_clk(memberBook);
 			}
 		});
 		
+		// View Member Profiles
 		btnViewMember = new JButton("View Member Profiles");
-		
 		btnViewMember.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewMembersGUI vmGUI = new ViewMembersGUI(memberBook);
-				vmGUI.setVisible(true);
+				btn_viewMember_clk(memberBook);
 			}
 		});
 		btnViewMember.setBounds(120, 120, 198, 29);
@@ -73,5 +71,16 @@ public class AdminGUI extends JFrame {
 		});
 		btnBack.setBounds(161, 188, 117, 29);
 		contentPane.add(btnBack);
+		
+		
+	}
+	void btn_registerMember_clk(MemberBook memberBook) {
+		RegisterMemberGUI rmGUI = new RegisterMemberGUI(memberBook);
+		rmGUI.setVisible(true);
+	}
+	
+	void btn_viewMember_clk(MemberBook memberBook) {
+		ViewMembersGUI vmGUI = new ViewMembersGUI(memberBook);
+		vmGUI.setVisible(true);
 	}
 }
