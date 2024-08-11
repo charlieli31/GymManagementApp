@@ -9,7 +9,12 @@ public class MemberBook implements Serializable {
     public MemberBook() {
         this.memberBook = new ArrayList<>();
         // Load members from file on initialization
-        this.memberBook = FileManager.loadMembersFromFile();
+        try {
+        this.memberBook = FileManager.loadMembersFromFile();}
+        
+        catch(Exception e) {
+        	
+        }
     }
 
     public ArrayList<Member> getMemberBook() {
@@ -42,4 +47,6 @@ public class MemberBook implements Serializable {
             JOptionPane.showMessageDialog(null, "Error deleting member: Member not found.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    
 }

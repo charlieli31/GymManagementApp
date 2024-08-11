@@ -16,11 +16,17 @@ public class BrowseTrainersGUI extends JFrame {
 	private JList list;
 	private JButton btnViewTimes;
 	private JButton btnCancel;
+	private Member activeMember;
+	private MemberBook memberBook;
+	private TrainerBook trainerBook;
 
 	/**
 	 * Create the frame.
 	 */
-	public BrowseTrainersGUI(Member aciveMember, TrainerBook trainerBook) {
+	public BrowseTrainersGUI(MemberBook memberBook, Member activeMember, TrainerBook trainerBook) {
+		this.memberBook = memberBook;
+		this.activeMember = activeMember;
+		this.trainerBook =  trainerBook;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -64,10 +70,19 @@ public class BrowseTrainersGUI extends JFrame {
 			   
 					});
 
+
+		btnCancel.addActionListener(
+				new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+					//BookSessionGUI bsGUI = new BookSessionGUI();
+					//bsGUI.setVisible(true);
+						dispose();
+						}
+					});
 	}
 
 	void btn_viewTimes_clk() {
-		BookSessionGUI bsGUI = new BookSessionGUI((Trainer) list.getSelectedValue());
+		BookSessionGUI bsGUI = new BookSessionGUI(memberBook,trainerBook, activeMember, (Trainer) list.getSelectedValue());
 		bsGUI.setVisible(true);
 	}
 	

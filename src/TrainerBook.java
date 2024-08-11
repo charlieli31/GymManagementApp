@@ -5,17 +5,24 @@ import java.util.ArrayList;
 
 public class TrainerBook implements Serializable{
 
+	
 	private ArrayList<Trainer> trainers;
 
 
 	
 
 	public TrainerBook() {
+		
+			try {
+		        this.trainers = FileManager.loadTrainersFromFile();}
+		        
+	        catch(Exception e) {
+	        	this.trainers = new ArrayList<Trainer>();
+	        	initializeTrainers();
 
-		this.trainers = new ArrayList<Trainer>();
+	        }
 
-		initializeTrainers();
-
+		
 		
 
 	}

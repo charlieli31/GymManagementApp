@@ -15,13 +15,15 @@ public class MemberGUI extends JFrame {
 	private JButton btnViewSessions;
 	private Member activeMember;
 	private TrainerBook trainerBook;
+	private MemberBook memberBook;
 
 	/**
 	 * Create the frame.
 	 */
-	public MemberGUI(Member activeMember, TrainerBook trainerBook) {
+	public MemberGUI(MemberBook memberBook, Member activeMember, TrainerBook trainerBook) {
 		this.activeMember = activeMember;
 		this.trainerBook = trainerBook;
+		this.memberBook = memberBook;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -75,8 +77,8 @@ public class MemberGUI extends JFrame {
 	
 	
 		void btn_viewTrainers_clk() {
-			
-			BrowseTrainersGUI btGUI = new BrowseTrainersGUI(activeMember, trainerBook);
+
+			BrowseTrainersGUI btGUI = new BrowseTrainersGUI(memberBook, activeMember, trainerBook);
 			btGUI.setVisible(true);
 		}
 	
