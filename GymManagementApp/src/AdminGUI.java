@@ -47,7 +47,7 @@ public class AdminGUI extends JFrame {
 		
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegisterMemberGUI rmGUI = new RegisterMemberGUI();
+				RegisterMemberGUI rmGUI = new RegisterMemberGUI(memberBook);
 				rmGUI.setVisible(true);
 			}
 		});

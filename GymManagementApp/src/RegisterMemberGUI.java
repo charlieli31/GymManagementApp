@@ -20,29 +20,14 @@ public class RegisterMemberGUI extends JFrame {
 	private JLabel lblPhone;
 	private JButton btnSave;
 	private JButton btnCancel;
+	private MemberBook memberBook;
 	
-	
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					RegisterMemberGUI frame = new RegisterMemberGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public RegisterMemberGUI() {
+	public RegisterMemberGUI(MemberBook memberBook) {
+		this.memberBook = memberBook;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -82,6 +67,7 @@ public class RegisterMemberGUI extends JFrame {
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Member newMember = new Member(txtFname.getText(), txtLname.getText(), txtPhone.getText());
+				memberBook.addMember(newMember);
 				
 			}
 		});
