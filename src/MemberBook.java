@@ -1,8 +1,11 @@
 import java.util.*;
 import java.io.*;
-
+import javax.swing.JOptionPane;
 
 public class MemberBook implements Serializable{
+    private static final long serialVersionUID = 1L;
+
+	
 	private ArrayList<Member> memberBook;
 	
 
@@ -10,9 +13,14 @@ public class MemberBook implements Serializable{
 //		super();
 		this.memberBook = new ArrayList<Member>();
 	}
-
+	
 	public ArrayList<Member> getMemberBook() {
 		return memberBook;
+	}
+
+	// de-serialize to get MemberBook
+	public ArrayList<Member> getSerializaedMemberBook() {
+		return loadMembersFromFile();
 	}
 
 	public void setMemberBook(ArrayList<Member> memberBook) {
@@ -29,11 +37,15 @@ public class MemberBook implements Serializable{
 	// Method to load contacts from file
     public ArrayList<Member> loadMembersFromFile() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("mb.bin"))) {
-            return (ArrayList<Member>) ois.readObject();
+            memberBook = (ArrayList<Member>) ois.readObject();
+            if (memberBook.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "The member list is empty.", "Information", JOptionPane.INFORMATION_MESSAGE);
+            }
         } catch (IOException | ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "Error loading members from file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
-		return memberBook;
+        return memberBook;
     }
 
     // Method to save contacts to file

@@ -12,6 +12,7 @@ public class AdminGUI extends JFrame {
 	private JPanel contentPane;
 	private JButton btnRegister;
 	private JButton btnViewMember;
+	private JButton btnBack;
 
 //	/**
 //	 * Launch the application.
@@ -42,7 +43,7 @@ public class AdminGUI extends JFrame {
 		contentPane.setLayout(null);
 		
 		btnRegister = new JButton("Register New Member");
-		btnRegister.setBounds(120, 79, 188, 29);
+		btnRegister.setBounds(120, 49, 198, 29);
 		contentPane.add(btnRegister);
 		
 		btnRegister.addActionListener(new ActionListener() {
@@ -56,12 +57,21 @@ public class AdminGUI extends JFrame {
 		
 		btnViewMember.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ViewMembersGUI vmGUI = new ViewMembersGUI();
+				ViewMembersGUI vmGUI = new ViewMembersGUI(memberBook);
 				vmGUI.setVisible(true);
 			}
 		});
-		btnViewMember.setBounds(120, 159, 198, 29);
+		btnViewMember.setBounds(120, 120, 198, 29);
 		contentPane.add(btnViewMember);
+		
+		btnBack = new JButton("Go Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Close the current window
+                dispose();
+			}
+		});
+		btnBack.setBounds(161, 188, 117, 29);
+		contentPane.add(btnBack);
 	}
-
 }

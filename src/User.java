@@ -1,9 +1,17 @@
+import java.io.Serializable;
 
-public class User {
+public class User implements Serializable{
+    private static final long serialVersionUID = 1L;
+
+	
 	private String fname;
 	private String lname;
 	
 	//  Constructor 
+    public User() {
+        // Default constructor
+    }
+    
 	public User(String fname, String lname) {
 		super();
 		this.fname = fname;

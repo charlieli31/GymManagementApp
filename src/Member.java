@@ -1,12 +1,20 @@
 import java.io.Serializable;
 
 public class Member extends User implements Serializable{
+    private static final long serialVersionUID = 1L;
+
+	
 	private String phone;
 
 	// Constructor
+	
+	// No-argument constructor
+    public Member() {
+        super();
+    }
+    
 	public Member(String fname, String lname) {
 		super(fname, lname);
-		// TODO Auto-generated constructor stub
 	}
 
 	public Member(String fname, String lname, String phone) {
@@ -23,5 +31,10 @@ public class Member extends User implements Serializable{
 		this.phone = phone;
 	}
 	
+	// Override toString to display member information
+    @Override
+    public String toString() {
+        return getFname() + " " + getLname() + " (" + phone + ")";
+    }
 
 }
