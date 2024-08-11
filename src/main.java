@@ -4,8 +4,7 @@ public class main {
 		MemberBook memberBook = new MemberBook();
 		MainGUI mGUI = new MainGUI(memberBook);
 		mGUI.setVisible(true);
-		//hello charlie
-		//testing out again
+	
 	}
 
 }
