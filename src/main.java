@@ -5,6 +5,7 @@ public class main {
 		MainGUI mGUI = new MainGUI(memberBook);
 		mGUI.setVisible(true);
 		//hello charlie
+		//testing out again
 	}
 
 }
