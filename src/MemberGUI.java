@@ -83,6 +83,7 @@ public class MemberGUI extends JFrame {
 		}
 	
 		void btn_viewSessions_clk() {
+			ViewRegisteredSessionsGUI vrgGUI = new ViewRegisteredSessionsGUI();
 			
 		}
 	
