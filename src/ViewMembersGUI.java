@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -46,6 +47,15 @@ public class ViewMembersGUI extends JFrame {
 		btnDelete.setBounds(164, 220, 117, 29);
 		contentPane.add(btnDelete);
 		
+		btnDelete.addActionListener(new ActionListener(){//)
+			
+			public void actionPerformed(ActionEvent e) {
+				btn_deleteMember_clk(memberBook);
+			}
+			
+		});
+	
+		
 		btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -61,8 +71,24 @@ public class ViewMembersGUI extends JFrame {
         return members.toArray(new Member[0]);
     }
     
+    void btn_deleteMember_clk(MemberBook memberBook){
+    	Member selectedMember = membersList.getSelectedValue(); 
+    	if (selectedMember != null) { 
+    		memberBook.deleteMember(selectedMember); 
+    		membersList.setListData(convertToJList(memberBook.loadMembersFromFile()));
+    	 } 
+    	else 
+    		{ JOptionPane.showMessageDialog(ViewMembersGUI.this, "Please select a member to delete."); }
+    	//}
+    }
+    
+    
+
+    
     void btn_editMember_clk(MemberBook memberBook) {
-//		EditMemberGUI eGUI = new EditMemberGUI(memberBook);
-//		eGUI.setVisible(true);
+    	Member selectedMember = membersList.getSelectedValue(); 
+		EditMemberGUI eGUI = new EditMemberGUI(memberBook, selectedMember);
+		eGUI.setVisible(true);
+    	
 	}
 }

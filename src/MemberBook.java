@@ -34,6 +34,22 @@ public class MemberBook implements Serializable{
         saveMembersToFile();
 	}
 	
+	public void deleteMember(Member member) {
+		//int i = 0;
+		//while (i<memberBook.length()) {	
+		//}
+		if (memberBook.remove(member)) {
+			System.out.println("reached here");
+			saveMembersToFile(); 
+			JOptionPane.showMessageDialog(null, "Member deleted successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
+			} 
+		else { JOptionPane.showMessageDialog(null, "Error deleting member: Member not found.", "Error", JOptionPane.ERROR_MESSAGE); }
+		}
+		
+		//memberBook.remove(member);
+		//saveMembersToFile();
+	
+	
 	// Method to load contacts from file
     public ArrayList<Member> loadMembersFromFile() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("mb.bin"))) {
