@@ -20,14 +20,11 @@ public class RegisterMemberGUI extends JFrame {
 	private JLabel lblPhone;
 	private JButton btnSave;
 	private JButton btnCancel;
-	private MemberBook memberBook;
 	
-
 	/**
 	 * Create the frame.
 	 */
 	public RegisterMemberGUI(MemberBook memberBook) {
-		this.memberBook = memberBook;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -67,8 +64,7 @@ public class RegisterMemberGUI extends JFrame {
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Member newMember = new Member(txtFname.getText(), txtLname.getText(), txtPhone.getText());
-				memberBook.addMember(newMember);
-				
+				memberBook.getMemberBook().add(newMember);
 			}
 		});
 		btnSave.setBounds(76, 211, 117, 29);
