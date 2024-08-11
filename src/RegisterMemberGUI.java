@@ -70,10 +70,7 @@ public class RegisterMemberGUI extends JFrame {
 		btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Member newMember = new Member(txtFname.getText(), txtLname.getText(), txtPhone.getText());
-				memberBook.addMember(newMember);
-				lblStatus.setText("Saved successfully!");
-                JOptionPane.showMessageDialog(RegisterMemberGUI.this, "Member saved successfully.");
+				btn_save_clk(memberBook);
 			}
 		});
 		btnSave.setBounds(76, 211, 117, 29);
@@ -88,5 +85,12 @@ public class RegisterMemberGUI extends JFrame {
         });
 		btnCancel.setBounds(256, 211, 117, 29);
 		contentPane.add(btnCancel);
+	}
+	
+	void btn_save_clk(MemberBook memberBook) {
+		Member newMember = new Member(txtFname.getText(), txtLname.getText(), txtPhone.getText());
+		memberBook.addMember(newMember);
+		lblStatus.setText("Saved successfully!");
+        JOptionPane.showMessageDialog(RegisterMemberGUI.this, "Member saved successfully.");
 	}
 }
