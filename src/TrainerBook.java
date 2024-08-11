@@ -66,6 +66,10 @@ public class TrainerBook implements Serializable{
 
 
 	}
+	
+	ArrayList<Trainer> getTrainers(){
+		return trainers;
+	}
 
 		
 

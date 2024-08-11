@@ -18,7 +18,7 @@ public class MainGUI extends JFrame {
 //	/**
 //	 * Create the frame.
 //	 */
-	public MainGUI(MemberBook memberBook) {
+	public MainGUI(MemberBook memberBook, TrainerBook trainerBook) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -41,7 +41,7 @@ public class MainGUI extends JFrame {
 		btnmember = new JButton("Member");
 		btnmember.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btn_Member_clk(memberBook);
+				btn_Member_clk(memberBook, trainerBook);
 			}
 		});
 		btnmember.setBounds(165, 112, 117, 29);
@@ -65,9 +65,9 @@ public class MainGUI extends JFrame {
 		aGUI.setVisible(true);
 	}
 	
-	void btn_Member_clk(MemberBook memberBook) {
-//		MemberGUI mGUI = new MemberGUI(memberBook);
-//		mGUI.setVisible(true);
+	void btn_Member_clk(MemberBook memberBook, TrainerBook trainerBook) {
+		MemberGUI mGUI = new MemberGUI(new Member("hello", "hello", "hello"), trainerBook);
+		mGUI.setVisible(true);
 	}
 	
 	void btn_BusinessAnalyst_clk(MemberBook memberBook) {

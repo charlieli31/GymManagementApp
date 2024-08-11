@@ -2,7 +2,8 @@
 public class main {
 	public static void main(String[] args) {
 		MemberBook memberBook = new MemberBook();
-		MainGUI mGUI = new MainGUI(memberBook);
+		TrainerBook trainerBook = new TrainerBook();
+		MainGUI mGUI = new MainGUI(memberBook, trainerBook);
 		mGUI.setVisible(true);
 	
 	}
