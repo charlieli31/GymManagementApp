@@ -6,6 +6,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class MainGUI extends JFrame {
 
@@ -13,6 +14,7 @@ public class MainGUI extends JFrame {
 	private JButton btnadmin;
 	private JButton btnmember;
 	private JButton btnBusinessAnalyst;
+	private JLabel lbltitle;
 	
 
 //	/**
@@ -56,6 +58,12 @@ public class MainGUI extends JFrame {
 		});
 		btnBusinessAnalyst.setBounds(144, 179, 171, 29);
 		contentPane.add(btnBusinessAnalyst);
+		
+		lbltitle = new JLabel("Welcome to our Gym!");
+		
+		//lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(6, 6, 16, 16);
+		contentPane.add(lblNewLabel);
 		
 		
 	}
