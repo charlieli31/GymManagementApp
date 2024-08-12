@@ -93,7 +93,15 @@ public class ViewRegisteredSessionsGUI extends JFrame {
 		}
 
 	private void btn_rescheduleSession_clk() {
+		Session  session = (Session) sessions.getSelectedValue();
+		//RescheduleSessionGUI rsGUI = new RescheduleSessionGUI(activeMember, session);
+		//rsGUI.setVisible(true);
 		
+		
+		
+		
+		FileManager.saveMembersToFile(memberBook.getMemberBook());
+		FileManager.saveTrainersToFile(trainerBook.getTrainers());
 	}
   
 	private void btn_cancelSession_clk() {

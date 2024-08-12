@@ -12,7 +12,7 @@ public class RescheduleSessionGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RescheduleSessionGUI() {
+	public RescheduleSessionGUI(Member activeMember) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
