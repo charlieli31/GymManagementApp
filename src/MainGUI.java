@@ -75,6 +75,7 @@ public class MainGUI extends JFrame {
 	
 	void btn_Member_clk(MemberBook memberBook, TrainerBook trainerBook) {
 		//System.out.println(memberBook.getMemberBook().get(0).getFname());
+		//replace memberBook.getMemberBook().get(0) with member login
 		MemberGUI mGUI = new MemberGUI(memberBook, memberBook.getMemberBook().get(0), trainerBook);
 		mGUI.setVisible(true);
 	}

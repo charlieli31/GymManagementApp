@@ -4,9 +4,9 @@ import java.io.Serializable;
 public class Session implements Serializable{
 
     private static final long serialVersionUID = 1L;
-	String date;
-	String time;
-	Trainer trainer;
+	private String date;
+	private String time;
+	private Trainer trainer;
 
 	
 
@@ -18,13 +18,21 @@ public class Session implements Serializable{
 
 
 	public String toString() {
-		return date + "," + time;
+		return trainer.getName() + ": " + date + ", " + time;
 	}
 
 	
 
 	public Trainer getTrainer() {
 		return trainer;
+	}
+	
+	public String getTime() {
+		return time;
+	}
+	
+	public String getDate() {
+		return date;
 	}
 
 }

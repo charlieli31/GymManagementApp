@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -36,7 +37,7 @@ public class ViewRegisteredSessionsGUI extends JFrame {
 
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-	setContentPane(contentPane);
+	    setContentPane(contentPane);
 
 		contentPane.setLayout(null);
 
@@ -89,31 +90,49 @@ public class ViewRegisteredSessionsGUI extends JFrame {
         				btn_rescheduleSession_clk();
                     }
                 });
+		
+		// Add a window focus listener to refresh the session list when this window gains focus
+        addWindowFocusListener(new java.awt.event.WindowAdapter() {
+            public void windowGainedFocus(java.awt.event.WindowEvent e) {
+                refreshSessionList();
+            }
+        });
 
 		}
+	
+	private void refreshSessionList() {
+        sessions.setListData(convertToJList(activeMember.getSessions()));
+    }
 
 	private void btn_rescheduleSession_clk() {
 		Session  session = (Session) sessions.getSelectedValue();
-		//RescheduleSessionGUI rsGUI = new RescheduleSessionGUI(activeMember, session);
-		//rsGUI.setVisible(true);
-		
-		
-		
-		
-		FileManager.saveMembersToFile(memberBook.getMemberBook());
-		FileManager.saveTrainersToFile(trainerBook.getTrainers());
+		if (session != null) {
+			RescheduleSessionGUI rsGUI = new RescheduleSessionGUI(activeMember, session, memberBook, trainerBook);
+			rsGUI.setVisible(true);
+	
+			FileManager.saveMembersToFile(memberBook.getMemberBook());
+			FileManager.saveTrainersToFile(trainerBook.getTrainers());
+		} else {
+			JOptionPane.showMessageDialog(ViewRegisteredSessionsGUI.this, "No session selected.");
+		}
 	}
   
 	private void btn_cancelSession_clk() {
 		Session  session = (Session) sessions.getSelectedValue();
-		activeMember.getSessions().remove(sessions.getSelectedValue());
-		session.getTrainer().getSessions().add(session);
-		//remove(session);
-
-		FileManager.saveMembersToFile(memberBook.getMemberBook());
-		FileManager.saveTrainersToFile(trainerBook.getTrainers());
-
-		dispose();
+		if (session != null) {
+			activeMember.getSessions().remove(sessions.getSelectedValue());
+			session.getTrainer().getSessions().add(session);
+			//remove(session);
+	
+			FileManager.saveMembersToFile(memberBook.getMemberBook());
+			FileManager.saveTrainersToFile(trainerBook.getTrainers());
+	
+			JOptionPane.showMessageDialog(ViewRegisteredSessionsGUI.this, "Session Canceled Successfully.");
+			refreshSessionList();
+			
+		} else {
+			JOptionPane.showMessageDialog(ViewRegisteredSessionsGUI.this, "No session selected.");
+		}
 
 	}
 

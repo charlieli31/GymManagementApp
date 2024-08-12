@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -82,8 +84,13 @@ public class BrowseTrainersGUI extends JFrame {
 	}
 
 	void btn_viewTimes_clk() {
-		BookSessionGUI bsGUI = new BookSessionGUI(memberBook,trainerBook, activeMember, (Trainer) list.getSelectedValue());
-		bsGUI.setVisible(true);
+		Trainer selectedTrainer = (Trainer) list.getSelectedValue();
+		if (selectedTrainer != null) {
+			BookSessionGUI bsGUI = new BookSessionGUI(memberBook,trainerBook, activeMember, selectedTrainer);
+			bsGUI.setVisible(true);
+		}else {
+			JOptionPane.showMessageDialog(BrowseTrainersGUI.this, "No trainer selected.");
+		}
 	}
 	
   private Trainer[] convertToJList(ArrayList<Trainer> trainers) {

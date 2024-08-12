@@ -73,16 +73,6 @@ public class BookSessionGUI extends JFrame {
 
 		
 
-//		btnBook = new JButton("Book Session");
-
-//		btnBook.setBounds(167,55,118,29);
-
-//		contentPane.add(btnBook);
-
-		
-
-		
-
 		btnBook = new JButton("Book Session");
 
 		btnBook.setBounds(62,194,118,29);
@@ -167,21 +157,19 @@ public class BookSessionGUI extends JFrame {
 
 	private void btn_book_clk() {
 
-		//System.out.println("printing");
+		Session selectedSession = (Session)times.getSelectedValue();
 
-		//System.out.println(activeMember.getFname());
-
-		activeMember.getSessions().add((Session)times.getSelectedValue());
-		trainer.getSessions().remove((Session)times.getSelectedValue());
-		FileManager.saveMembersToFile(memberBook.getMemberBook());
-		FileManager.saveTrainersToFile(trainerBook.getTrainers());
-
-		//money logic******
-
-		//bad input logic
-
-        JOptionPane.showMessageDialog(BookSessionGUI.this, "Session Booked Successfully.");
-        dispose();
+		if (selectedSession != null) {
+			activeMember.getSessions().add(selectedSession);
+			trainer.getSessions().remove(selectedSession);
+			FileManager.saveMembersToFile(memberBook.getMemberBook());
+			FileManager.saveTrainersToFile(trainerBook.getTrainers());
+	
+	        JOptionPane.showMessageDialog(BookSessionGUI.this, "Session Booked Successfully.");
+	        dispose();
+		}else {
+			JOptionPane.showMessageDialog(BookSessionGUI.this, "No session selected.");
+		}
 
 		
 
