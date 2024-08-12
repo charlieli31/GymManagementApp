@@ -162,6 +162,7 @@ public class BookSessionGUI extends JFrame {
 		if (selectedSession != null) {
 			activeMember.getSessions().add(selectedSession);
 			trainer.getSessions().remove(selectedSession);
+			activeMember.incrementSessionFee();
 			FileManager.saveMembersToFile(memberBook.getMemberBook());
 			FileManager.saveTrainersToFile(trainerBook.getTrainers());
 	

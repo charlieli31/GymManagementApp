@@ -81,7 +81,7 @@ public class MainGUI extends JFrame {
 	}
 	
 	void btn_BusinessAnalyst_clk(MemberBook memberBook) {
-//		BAGUI baGUI = new BAGUI(memberBook);
-//		baGUI.setVisible(true);
+		BusinessAnalystGUI baGUI = new BusinessAnalystGUI(memberBook);
+		baGUI.setVisible(true);
 	}
 }

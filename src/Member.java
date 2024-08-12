@@ -3,12 +3,14 @@ import java.util.ArrayList;
 
 public class Member extends User implements Serializable{
     private static final long serialVersionUID = 1L;
+    private static int membershipFee = 0;
 
 	
 	private String phone;
 	private ArrayList<Session> sessions;
 	private String username;
 	private String password;
+	private int sessionFee = 0;
 
 	// Constructor
 	
@@ -16,17 +18,20 @@ public class Member extends User implements Serializable{
     public Member() {
         super();
         sessions = new ArrayList<Session>();
+        Member.membershipFee += 25;
     }
     
 	public Member(String fname, String lname) {
 		super(fname, lname);
 		sessions = new ArrayList<Session>();
+		Member.membershipFee += 25;
 	}
 
 	public Member(String fname, String lname, String phone) {
 		super(fname, lname);
 		this.phone = phone;
 		sessions = new ArrayList<Session>();
+		Member.membershipFee += 25;
 	}
 	
 	
@@ -37,6 +42,7 @@ public class Member extends User implements Serializable{
 		this.sessions = new ArrayList<Session>();
 		this.username = username;
 		this.password = password;
+		Member.membershipFee += 25;
 	}
 
 	// Getters and Setters
@@ -73,5 +79,23 @@ public class Member extends User implements Serializable{
     public ArrayList<Session> getSessions() {
     	return sessions;
     }
+    
+    public static int getMembershipFee() {
+    	return membershipFee;
+    }
+
+	public int getSessionFee() {
+		return sessionFee;
+	}
+
+	public void setSessionFee(int sessionFee) {
+		this.sessionFee = sessionFee;
+	}
+	
+	public void incrementSessionFee() {
+		this.sessionFee += 50;
+	}
+    
+    
 
 }
