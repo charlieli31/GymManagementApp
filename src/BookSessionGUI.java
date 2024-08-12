@@ -172,11 +172,8 @@ public class BookSessionGUI extends JFrame {
 		//System.out.println(activeMember.getFname());
 
 		activeMember.getSessions().add((Session)times.getSelectedValue());
-
 		trainer.getSessions().remove((Session)times.getSelectedValue());
-
 		FileManager.saveMembersToFile(memberBook.getMemberBook());
-
 		FileManager.saveTrainersToFile(trainerBook.getTrainers());
 
 		//money logic******
@@ -184,7 +181,6 @@ public class BookSessionGUI extends JFrame {
 		//bad input logic
 
         JOptionPane.showMessageDialog(BookSessionGUI.this, "Session Booked Successfully.");
-
         dispose();
 
 		
@@ -194,7 +190,6 @@ public class BookSessionGUI extends JFrame {
 	
 
 	 private Session[] convertToJList(ArrayList<Session> sessions) {
-
 	        return sessions.toArray(new Session[0]);
 
 	    }
