@@ -16,6 +16,7 @@ public class MemberGUI extends JFrame {
 	private Member activeMember;
 	private TrainerBook trainerBook;
 	private MemberBook memberBook;
+	private JButton btnBack;
 
 	/**
 	 * Create the frame.
@@ -36,13 +37,18 @@ public class MemberGUI extends JFrame {
 		//contentPane.add(btnNewButton);
 		
 		btnViewTrainers = new JButton("View Trainers");
-		btnViewTrainers.setBounds(161, 66, 128, 29);
+		btnViewTrainers.setBounds(161, 60, 128, 29);
 		contentPane.add(btnViewTrainers);
 		
 		btnViewSessions = new JButton("View Registered Sessions");
-		btnViewSessions.setBounds(131, 131, 193, 30);
+		btnViewSessions.setBounds(135, 123, 200, 30);
 		contentPane.add(btnViewSessions);
 		
+		
+		btnBack = new JButton("Go Back");
+		//btnBack.setBounds(131, 131, 193, 30);
+		btnBack.setBounds(131, 194, 193, 29);
+		contentPane.add(btnBack);
 		
 		//btnViewSessions
 		btnViewTrainers.addActionListener(
@@ -69,6 +75,17 @@ public class MemberGUI extends JFrame {
 			   }
 			);
 		
+		btnBack.addActionListener(
+				new ActionListener()
+					{
+				   public void actionPerformed(ActionEvent e) {
+		                dispose();
+				
+				   			}
+				   }
+				);
+		
+		
 		
 		//EventListener()
 	//}
@@ -83,8 +100,8 @@ public class MemberGUI extends JFrame {
 		}
 	
 		void btn_viewSessions_clk() {
-			ViewRegisteredSessionsGUI vrgGUI = new ViewRegisteredSessionsGUI();
-			
+			ViewRegisteredSessionsGUI vrgGUI = new ViewRegisteredSessionsGUI(memberBook, activeMember, trainerBook);
+			vrgGUI.setVisible(true);
 		}
 	
 	

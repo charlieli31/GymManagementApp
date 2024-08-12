@@ -60,10 +60,10 @@ public class MainGUI extends JFrame {
 		contentPane.add(btnBusinessAnalyst);
 		
 		lbltitle = new JLabel("Welcome to our Gym!");
+		lbltitle.setBounds(154, 6, 148, 31);
+		contentPane.add(lbltitle);
 		
-		//lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(6, 6, 16, 16);
-		contentPane.add(lblNewLabel);
+	
 		
 		
 	}
