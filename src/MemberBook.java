@@ -32,9 +32,11 @@ public class MemberBook implements Serializable {
         FileManager.saveMembersToFile(memberBook);
     }
 
-    public void editMember(Member member, String newName, String newName2, String phone) {
-        member.setFname(newName);
-        member.setLname(newName2);
+    public void editMember(Member member, String username, String password, String newFname, String newLname, String phone) {
+    	member.setUsername(username);
+    	member.setPassword(password);
+        member.setFname(newFname);
+        member.setLname(newLname);
         member.setPhone(phone);
         FileManager.saveMembersToFile(memberBook);
     }

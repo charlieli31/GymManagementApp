@@ -14,9 +14,16 @@ public class RegisterMemberGUI extends JFrame {
     private JTextField txtFname;
     private JTextField txtLname;
     private JTextField txtPhone;
+    private JTextField txtUsername;
+    private JTextField txtPassword;
     private JButton btnSave;
     private JButton btnCancel;
     private MemberBook memberBook;
+    private JLabel lblFname;
+    private JLabel lblLname;
+    private JLabel lblPhone;
+    private JLabel lblUsername;
+    private JLabel lblPassword;
 
     public RegisterMemberGUI(MemberBook memberBook) {
         this.memberBook = memberBook;
@@ -29,30 +36,30 @@ public class RegisterMemberGUI extends JFrame {
         contentPane.setLayout(null);
 
         txtFname = new JTextField();
-        txtFname.setBounds(159, 45, 130, 26);
+        txtFname.setBounds(227, 97, 130, 26);
         contentPane.add(txtFname);
         txtFname.setColumns(10);
 
         txtLname = new JTextField();
-        txtLname.setBounds(159, 104, 130, 26);
+        txtLname.setBounds(227, 130, 130, 26);
         contentPane.add(txtLname);
         txtLname.setColumns(10);
 
         txtPhone = new JTextField();
-        txtPhone.setBounds(159, 168, 130, 26);
+        txtPhone.setBounds(227, 163, 130, 26);
         contentPane.add(txtPhone);
         txtPhone.setColumns(10);
 
-        JLabel lblFname = new JLabel("First Name");
-        lblFname.setBounds(69, 50, 82, 16);
+        lblFname = new JLabel("First Name");
+        lblFname.setBounds(90, 102, 82, 16);
         contentPane.add(lblFname);
 
-        JLabel lblLname = new JLabel("Last Name");
-        lblLname.setBounds(69, 109, 76, 16);
+        lblLname = new JLabel("Last Name");
+        lblLname.setBounds(90, 135, 76, 16);
         contentPane.add(lblLname);
 
-        JLabel lblPhone = new JLabel("Phone");
-        lblPhone.setBounds(69, 173, 61, 16);
+        lblPhone = new JLabel("Phone");
+        lblPhone.setBounds(90, 168, 82, 16);
         contentPane.add(lblPhone);
 
         btnSave = new JButton("Save");
@@ -73,14 +80,34 @@ public class RegisterMemberGUI extends JFrame {
         });
         btnCancel.setBounds(240, 220, 117, 29);
         contentPane.add(btnCancel);
+        
+        txtUsername = new JTextField();
+        txtUsername.setBounds(227, 21, 130, 26);
+        contentPane.add(txtUsername);
+        txtUsername.setColumns(10);
+        
+        txtPassword = new JTextField();
+        txtPassword.setBounds(227, 58, 130, 26);
+        contentPane.add(txtPassword);
+        txtPassword.setColumns(10);
+        
+        lblUsername = new JLabel("Username");
+        lblUsername.setBounds(90, 26, 82, 16);
+        contentPane.add(lblUsername);
+        
+        lblPassword = new JLabel("Password");
+        lblPassword.setBounds(90, 63, 82, 16);
+        contentPane.add(lblPassword);
     }
 
     void btn_save_clk() {
+    	String username = txtUsername.getText();
+    	String password = txtPassword.getText();
         String fname = txtFname.getText();
         String lname = txtLname.getText();
         String phone = txtPhone.getText();
-        if (!fname.isEmpty() && !lname.isEmpty() && !phone.isEmpty()) {
-            Member newMember = new Member(fname, lname, phone);
+        if (!fname.isEmpty() && !lname.isEmpty() && !phone.isEmpty() && !username.isEmpty() && !password.isEmpty()) {
+            Member newMember = new Member(fname, lname, phone, username, password);
             memberBook.addMember(newMember);
             JOptionPane.showMessageDialog(RegisterMemberGUI.this, "Member added successfully.");
             dispose();

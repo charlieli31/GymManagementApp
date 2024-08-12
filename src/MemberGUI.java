@@ -45,7 +45,7 @@ public class MemberGUI extends JFrame {
 		contentPane.add(btnViewSessions);
 		
 		
-		btnBack = new JButton("Go Back");
+		btnBack = new JButton("Log Out");
 		//btnBack.setBounds(131, 131, 193, 30);
 		btnBack.setBounds(131, 194, 193, 29);
 		contentPane.add(btnBack);
