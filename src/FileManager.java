@@ -4,24 +4,27 @@ import javax.swing.JOptionPane;
 
 public class FileManager {
 
+	// save trainers
     public static void saveTrainersToFile(ArrayList<Trainer> trainerBook) {
         try (FileOutputStream fos = new FileOutputStream("tb.bin");
         	 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(trainerBook);// s);
         } catch (IOException e) {
-           // e.printStackTrace();
+           e.printStackTrace();
         }
     }
     
+    // save members
     public static void saveMembersToFile(ArrayList<Member> memberBook) {
         try (FileOutputStream fos = new FileOutputStream("mb.bin");
         	 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
             oos.writeObject(memberBook);
         } catch (IOException e) {
-           // e.printStackTrace();
+           e.printStackTrace();
         }
     }
 
+    // load members
     public static ArrayList<Member> loadMembersFromFile() {
         ArrayList<Member> members = new ArrayList<>();
         try {
@@ -34,13 +37,13 @@ public class FileManager {
             return members;
         } 
         catch (Exception e) {
-           // JOptionPane.showMessageDialog(null, "Error loading members from file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-           // e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error loading members from file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         	return members;
         }
     }
     
-    
+    // load trainers
     public static ArrayList<Trainer> loadTrainersFromFile() throws Exception{
     	FileInputStream fis = new FileInputStream("tb.bin");
     	ObjectInputStream ois = new ObjectInputStream(fis);
@@ -48,6 +51,7 @@ public class FileManager {
         return trainers;
     } 
     
+    // save membership fee
     public static void saveMembershipFee(int membershipFee) {
         try (FileOutputStream fos = new FileOutputStream("membershipFee.bin");
         	 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
@@ -57,6 +61,7 @@ public class FileManager {
         }
     }
 
+    // load membership fee
     public static int loadMembershipFee() {
         int fee = 0;
         try (FileInputStream fis = new FileInputStream("membershipFee.bin");

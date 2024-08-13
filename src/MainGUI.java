@@ -15,7 +15,7 @@ public class MainGUI extends JFrame {
 	private JButton btnmember;
 	private JButton btnBusinessAnalyst;
 	private JLabel lbltitle;
-	private TrainerBook trainerBook; // modified
+	private TrainerBook trainerBook;
 	
 
 //	/**
@@ -69,20 +69,21 @@ public class MainGUI extends JFrame {
 		
 		
 	}
-	
-	// modified to pass trainerBook
-	void btn_Admin_clk(MemberBook memberBook, TrainerBook trainerBook) {
-		// pass trainerBook
+
+	// click Admin
+	private void btn_Admin_clk(MemberBook memberBook, TrainerBook trainerBook) {
 		AdminGUI aGUI = new AdminGUI(memberBook, trainerBook);
 		aGUI.setVisible(true);
 	}
 	
-	void btn_Member_clk(MemberBook memberBook, TrainerBook trainerBook) {
+	// click Member
+	private void btn_Member_clk(MemberBook memberBook, TrainerBook trainerBook) {
 		LoginGUI lGUI = new LoginGUI(memberBook, trainerBook);
 		lGUI.setVisible(true);
 	}
 	
-	void btn_BusinessAnalyst_clk(MemberBook memberBook) {
+	// click BA
+	private void btn_BusinessAnalyst_clk(MemberBook memberBook) {
 		BusinessAnalystGUI baGUI = new BusinessAnalystGUI(memberBook);
 		baGUI.setVisible(true);
 	}

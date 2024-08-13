@@ -66,12 +66,14 @@ public class RegisterMemberGUI extends JFrame {
         btnSave.setBounds(80, 220, 117, 29);
         contentPane.add(btnSave);
 
+        // Save event
         btnSave.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 btn_save_clk();
             }
         });
 
+        // Cancel event
         btnCancel = new JButton("Cancel");
         btnCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -100,18 +102,21 @@ public class RegisterMemberGUI extends JFrame {
         contentPane.add(lblPassword);
     }
 
-    void btn_save_clk() {
+    // click save
+    private void btn_save_clk() {
     	String username = txtUsername.getText();
     	String password = txtPassword.getText();
         String fname = txtFname.getText();
         String lname = txtLname.getText();
         String phone = txtPhone.getText();
         
+        // check if username is taken
         if (memberBook.isUsernameTaken(username)) {
             JOptionPane.showMessageDialog(RegisterMemberGUI.this, "Username is already taken. Please enter another one.");
             return;
         }
         
+        // if all fields are filled
         if (!fname.isEmpty() && !lname.isEmpty() && !phone.isEmpty() && !username.isEmpty() && !password.isEmpty()) {
             Member newMember = new Member(fname, lname, phone, username, password);
             memberBook.addMember(newMember);

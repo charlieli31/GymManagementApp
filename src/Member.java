@@ -12,6 +12,7 @@ public class Member extends User implements Serializable{
 	private String password;
 	private int sessionFee = 0;
 
+	// initialize the membershipFee to solve return to 0 problem
 	static {
         membershipFee = FileManager.loadMembershipFee(); // Load the membership fee at startup
     }
@@ -72,13 +73,7 @@ public class Member extends User implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	// Override toString to display member information
-    @Override
-    public String toString() {
-        return getFname() + " " + getLname() + " (" + phone + ")";
-    }
-    
+
     public ArrayList<Session> getSessions() {
     	return sessions;
     }
@@ -95,10 +90,16 @@ public class Member extends User implements Serializable{
 		this.sessionFee = sessionFee;
 	}
 	
+	// increment session fee by $50
 	public void incrementSessionFee() {
 		this.sessionFee += 50;
 	}
-    
+	
+	// Override toString to display member information
+    @Override
+    public String toString() {
+        return getFname() + " " + getLname() + " (" + phone + ")";
+    }
     
 
 }

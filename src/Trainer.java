@@ -5,20 +5,18 @@ public class Trainer implements Serializable {
 	private String name;
 	private ArrayList<Session> sessions;
 	
+	// constructor
 	public Trainer(String name) {
 		this.name = name;
 		sessions = new ArrayList<Session>();
 	}
 	
-//	void addSession(String date, String time) {
-//		sessions.add(new Session(date, time));
-//	}
 	
 	void addSession(Session newSession) {
 		sessions.add(newSession);
 	}
 	
-	//void\
+	
 	public String toString() {
 		return name;
 	}

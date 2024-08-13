@@ -8,8 +8,7 @@ public class Session implements Serializable{
 	private String time;
 	private Trainer trainer;
 
-	
-
+	// constructor
 	public Session(String date, String time, Trainer trainer) {
 		this.time = time;
 		this.date = date;
@@ -21,8 +20,7 @@ public class Session implements Serializable{
 		return trainer.getName() + ": " + date + ", " + time;
 	}
 
-	
-
+	// getters
 	public Trainer getTrainer() {
 		return trainer;
 	}

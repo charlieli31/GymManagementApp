@@ -33,9 +33,6 @@ public class MemberGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		//JButton btnNewButton = new JButton("New button");
-		//contentPane.add(btnNewButton);
-		
 		btnViewTrainers = new JButton("View Trainers");
 		btnViewTrainers.setBounds(161, 60, 128, 29);
 		contentPane.add(btnViewTrainers);
@@ -43,66 +40,43 @@ public class MemberGUI extends JFrame {
 		btnViewSessions = new JButton("View Registered Sessions");
 		btnViewSessions.setBounds(135, 123, 200, 30);
 		contentPane.add(btnViewSessions);
-		
-		
+
 		btnBack = new JButton("Log Out");
-		//btnBack.setBounds(131, 131, 193, 30);
 		btnBack.setBounds(131, 194, 193, 29);
 		contentPane.add(btnBack);
 		
-		//btnViewSessions
-		btnViewTrainers.addActionListener(
-				
-				
-				new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						btn_viewTrainers_clk();
-					}
-				}
-				
-				
-				);
-		
-		
-		
-		btnViewSessions.addActionListener(
-			new ActionListener()
-				{
-			   public void actionPerformed(ActionEvent e) {
-	                btn_viewSessions_clk();
-			
-			   			}
-			   }
-			);
-		
-		btnBack.addActionListener(
-				new ActionListener()
-					{
-				   public void actionPerformed(ActionEvent e) {
-		                dispose();
-				
-				   			}
-				   }
-				);
-		
-		
-		
-		//EventListener()
-	//}
-
+		// Browse Trainers event
+		btnViewTrainers.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btn_viewTrainers_clk();
 			}
+		});
+		
+		// View Registered Session event
+		btnViewSessions.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				btn_viewSessions_clk();
+			}
+		});
+		
+		// Back event
+		btnBack.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+	}
 	
+	// click Browse Trainers
+	private void btn_viewTrainers_clk() {
+		BrowseTrainersGUI btGUI = new BrowseTrainersGUI(memberBook, activeMember, trainerBook);
+		btGUI.setVisible(true);
+	}
 	
-		void btn_viewTrainers_clk() {
-
-			BrowseTrainersGUI btGUI = new BrowseTrainersGUI(memberBook, activeMember, trainerBook);
-			btGUI.setVisible(true);
-		}
-	
-		void btn_viewSessions_clk() {
-			ViewRegisteredSessionsGUI vrgGUI = new ViewRegisteredSessionsGUI(memberBook, activeMember, trainerBook);
-			vrgGUI.setVisible(true);
-		}
-	
+	// click View Registered Sessions
+	private void btn_viewSessions_clk() {
+		ViewRegisteredSessionsGUI vrgGUI = new ViewRegisteredSessionsGUI(memberBook, activeMember, trainerBook);
+		vrgGUI.setVisible(true);
+	}
 	
 }

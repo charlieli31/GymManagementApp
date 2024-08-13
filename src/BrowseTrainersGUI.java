@@ -37,63 +37,50 @@ public class BrowseTrainersGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		
-		
+		// Trainers List
 		list = new JList<>(convertToJList(trainerBook.getTrainers()));
 		list.setBounds(75,33,287,178);
 		contentPane.add(list);
 		
-		
-		//JButton 
+		// View times button
 		btnViewTimes = new JButton("View Times");
-		//btnNewButton
 		btnViewTimes.setBounds(48, 222, 117, 29);
 		contentPane.add(btnViewTimes);
-				//NewButton
 		
-//		btnCancel = new JButton("Cancel");
-//		btnCancel.setBounds(256, 214, 20, 45);
-//		contentPane.add(btnCancel);
-		
-		
+		// Cancel button
 		btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(242, 223, 130, 29);
 		contentPane.add(btnCancel);
 	
-		btnViewTimes.addActionListener(
-				new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-					//BookSessionGUI bsGUI = new BookSessionGUI();
-					//bsGUI.setVisible(true);
-						btn_viewTimes_clk();
-						}
-				//);
-		//btnViewTimes.addActionListener(
-			   
-					});
+		// View times event
+		btnViewTimes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btn_viewTimes_clk();
+			}
+		});
 
-
-		btnCancel.addActionListener(
-				new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-					//BookSessionGUI bsGUI = new BookSessionGUI();
-					//bsGUI.setVisible(true);
-						dispose();
-						}
-					});
+		// Cancel event
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 	}
 
-	void btn_viewTimes_clk() {
+	// click View Times
+	private void btn_viewTimes_clk() {
 		Trainer selectedTrainer = (Trainer) list.getSelectedValue();
 		if (selectedTrainer != null) {
 			BookSessionGUI bsGUI = new BookSessionGUI(memberBook,trainerBook, activeMember, selectedTrainer);
 			bsGUI.setVisible(true);
 		}else {
+			// handle the case if the user did not select a trainer
 			JOptionPane.showMessageDialog(BrowseTrainersGUI.this, "No trainer selected.");
 		}
 	}
 	
-  private Trainer[] convertToJList(ArrayList<Trainer> trainers) {
+	// convert to JList
+	private Trainer[] convertToJList(ArrayList<Trainer> trainers) {
         return trainers.toArray(new Trainer[0]);
     }
 }

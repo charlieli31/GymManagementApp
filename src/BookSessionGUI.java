@@ -105,16 +105,13 @@ public class BookSessionGUI extends JFrame {
 			// handle the case if the user did not select a session
 			JOptionPane.showMessageDialog(BookSessionGUI.this, "No session selected.");
 		}
-
-		
-
 	}
+	// refresh method
 	private void refreshSessionList() {
         times.setListData(convertToJList(trainer.getSessions())); // Update the JList data
     }
 
-	
-
+	// convertToJList
 	private Session[] convertToJList(ArrayList<Session> sessions) {
 	        return sessions.toArray(new Session[0]);
 	}

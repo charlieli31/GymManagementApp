@@ -111,7 +111,7 @@ public class LoginGUI extends JFrame {
 	    refreshPage();
 	}
 
-	
+	// refresh the page
 	private void refreshPage() {
         txtUsername.setText("");
         txtPassword.setText("");

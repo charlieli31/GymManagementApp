@@ -22,8 +22,6 @@ public class ViewRegisteredSessionsGUI extends JFrame {
 	private Member activeMember;
 	private TrainerBook trainerBook;
 
-
-
 	public ViewRegisteredSessionsGUI(MemberBook memberBook, Member activeMember, TrainerBook trainerBook) {
 		this.memberBook = memberBook;
 		this.activeMember = activeMember;
@@ -66,30 +64,23 @@ public class ViewRegisteredSessionsGUI extends JFrame {
 
         
 
-        btnCancel.addActionListener(
-        		new ActionListener() {
-        			public void actionPerformed(ActionEvent e) {
-                        dispose();
-                    }
+        btnCancel.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		dispose();
+        	}
+        });
 
-                });
+        btnCancelSession.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		btn_cancelSession_clk();
+            }
+        });
 
-        
-
-        btnCancelSession.addActionListener(
-        		new ActionListener() {
-        			public void actionPerformed(ActionEvent e) {//c
-                        btn_cancelSession_clk();
-                    }
-
-                });
-
-		btnReschedule.addActionListener(
-        		new ActionListener() {
-        			public void actionPerformed(ActionEvent e) {//c
-        				btn_rescheduleSession_clk();
-                    }
-                });
+		btnReschedule.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btn_rescheduleSession_clk();
+			}
+		});
 		
 		// Add a window focus listener to refresh the session list when this window gains focus
         addWindowFocusListener(new java.awt.event.WindowAdapter() {
@@ -97,13 +88,14 @@ public class ViewRegisteredSessionsGUI extends JFrame {
                 refreshSessionList();
             }
         });
-
-		}
+    }
 	
+	// refresh JList
 	private void refreshSessionList() {
         sessions.setListData(convertToJList(activeMember.getSessions()));
     }
 
+	// click reschedule
 	private void btn_rescheduleSession_clk() {
 		Session  session = (Session) sessions.getSelectedValue();
 		if (session != null) {
@@ -113,16 +105,17 @@ public class ViewRegisteredSessionsGUI extends JFrame {
 			FileManager.saveMembersToFile(memberBook.getMemberBook());
 			FileManager.saveTrainersToFile(trainerBook.getTrainers());
 		} else {
+			// handle the case if no session is selected
 			JOptionPane.showMessageDialog(ViewRegisteredSessionsGUI.this, "No session selected.");
 		}
 	}
   
+	// click cancel session
 	private void btn_cancelSession_clk() {
 		Session  session = (Session) sessions.getSelectedValue();
 		if (session != null) {
 			activeMember.getSessions().remove(sessions.getSelectedValue());
 			session.getTrainer().getSessions().add(session);
-			//remove(session);
 	
 			FileManager.saveMembersToFile(memberBook.getMemberBook());
 			FileManager.saveTrainersToFile(trainerBook.getTrainers());
@@ -131,17 +124,13 @@ public class ViewRegisteredSessionsGUI extends JFrame {
 			refreshSessionList();
 			
 		} else {
+			// handle the case if no session is selected
 			JOptionPane.showMessageDialog(ViewRegisteredSessionsGUI.this, "No session selected.");
 		}
-
 	}
 
-	
     private Session[] convertToJList(ArrayList<Session> sessions) {
-
         return sessions.toArray(new Session[0]);
-
     }
-
 
 }

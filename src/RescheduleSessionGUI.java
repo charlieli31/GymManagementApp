@@ -57,7 +57,6 @@ public class RescheduleSessionGUI extends JFrame {
 		btnReschedule.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btn_reschedule_clk();
-				// OptionPane to pop up successful message
 			}
 		});
 		btnReschedule.setBounds(157, 209, 117, 29);
@@ -88,21 +87,23 @@ public class RescheduleSessionGUI extends JFrame {
         return sessions.toArray(new Session[0]);
     }
 	
-	void btn_reschedule_clk() {
+	// click reschedule
+	private void btn_reschedule_clk() {
 		
 		
-		// Deleting the original session
+		// deleting the original session
 		activeMember.getSessions().remove(session);
 		trainer.getSessions().add(session);
 		
-		// Adding the new session
+		// adding the new session
 		activeMember.getSessions().add((Session)times.getSelectedValue());
 		trainer.getSessions().remove((Session)times.getSelectedValue());
 		
+		// save data
 		FileManager.saveMembersToFile(memberBook.getMemberBook());
 		FileManager.saveTrainersToFile(trainerBook.getTrainers());
 		
-		// Show success message and close the window
+		// show success message and close the window
         JOptionPane.showMessageDialog(this, "Session rescheduled successfully.");
         dispose();
 	}

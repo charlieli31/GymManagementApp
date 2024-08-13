@@ -107,11 +107,13 @@ public class EditMemberGUI extends JFrame {
         
     }
 
-    void btn_save_clk(MemberBook memberBook) {
+    // click save
+    private void btn_save_clk(MemberBook memberBook) {
         if (selectedMember != null) {
             memberBook.editMember(selectedMember, txtUsername.getText(), txtPassword.getText(), txtFname.getText(), txtLname.getText(), txtPhone.getText());
             JOptionPane.showMessageDialog(EditMemberGUI.this, "Member edited successfully.");
         } else {
+        	// handle the case if no member is selected
             JOptionPane.showMessageDialog(EditMemberGUI.this, "No member selected.");
         }
     }

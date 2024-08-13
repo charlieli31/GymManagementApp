@@ -16,9 +16,8 @@ public class ViewMembersGUI extends JFrame {
     private JButton btnDelete;
     private JList<Member> membersList;
     private MemberBook memberBook;
-    private TrainerBook trainerBook; // modified
+    private TrainerBook trainerBook;
 
-    // pass trainerBook
     public ViewMembersGUI(MemberBook memberBook, TrainerBook trainerBook) {
         this.memberBook = memberBook;
         this.trainerBook = trainerBook;
@@ -62,28 +61,33 @@ public class ViewMembersGUI extends JFrame {
         contentPane.add(btnCancel);
     }
 
+    // convert to JList
     private Member[] convertToJList(ArrayList<Member> members) {
         return members.toArray(new Member[0]);
     }
 
-    void btn_deleteMember_clk() {
+    // click delete
+    private void btn_deleteMember_clk() {
         Member selectedMember = membersList.getSelectedValue();
         if (selectedMember != null) {
-        	// pass trainerBook
+        	// pass selected member and trainerBook
             memberBook.deleteMember(selectedMember, trainerBook);
-            // Refresh the page
+            // refresh the page
             membersList.setListData(convertToJList(memberBook.getMemberBook()));
         } else {
+        	// handle the case if no member is selected
             JOptionPane.showMessageDialog(ViewMembersGUI.this, "Please select a member to delete.");
         }
     }
 
-    void btn_editMember_clk() {
+    // click edit
+    private void btn_editMember_clk() {
         Member selectedMember = membersList.getSelectedValue();
         if (selectedMember != null) {
             EditMemberGUI eGUI = new EditMemberGUI(memberBook, selectedMember);
             eGUI.setVisible(true);
         } else {
+        	// handle the case if no member is selected
             JOptionPane.showMessageDialog(ViewMembersGUI.this, "Please select a member to edit.");
         }
     }

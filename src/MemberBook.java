@@ -6,6 +6,7 @@ public class MemberBook implements Serializable {
     private static final long serialVersionUID = 1L;
     private ArrayList<Member> memberBook;
 
+    // constructor
     public MemberBook() {
         this.memberBook = new ArrayList<>();
         // Load members from file on initialization
@@ -21,18 +22,21 @@ public class MemberBook implements Serializable {
         return memberBook;
     }
 
+    // set
     public void setMemberBook(ArrayList<Member> memberBook) {
         this.memberBook = memberBook;
         // Save members to file after setting the book
         FileManager.saveMembersToFile(memberBook);
     }
 
+    // add
     public void addMember(Member member) {
         memberBook.add(member);
         FileManager.saveMembersToFile(memberBook);
         FileManager.saveMembershipFee(Member.getMembershipFee()); 
     }
 
+    // edit
     public void editMember(Member member, String username, String password, String newFname, String newLname, String phone) {
     	member.setUsername(username);
     	member.setPassword(password);
@@ -42,6 +46,7 @@ public class MemberBook implements Serializable {
         FileManager.saveMembersToFile(memberBook);
     }
 
+    // delete
     public void deleteMember(Member member, TrainerBook trainerBook) {
     	// Restore sessions back to trainers
         for (Session session : member.getSessions()) {
