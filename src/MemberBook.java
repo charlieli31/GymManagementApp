@@ -42,14 +42,30 @@ public class MemberBook implements Serializable {
         FileManager.saveMembersToFile(memberBook);
     }
 
-    public void deleteMember(Member member) {
+    public void deleteMember(Member member, TrainerBook trainerBook) {
+    	// Restore sessions back to trainers
+        for (Session session : member.getSessions()) {
+            Trainer trainer = session.getTrainer();
+            trainer.addSession(session);
+        }
+        
         if (memberBook.remove(member)) {
             FileManager.saveMembersToFile(memberBook);
+            FileManager.saveTrainersToFile(trainerBook.getTrainers()); // Save the trainers after restoring sessions
             JOptionPane.showMessageDialog(null, "Member deleted successfully.", "Information", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "Error deleting member: Member not found.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+	public boolean isUsernameTaken(String username) {
+		for (Member member : memberBook) {
+            if (member.getUsername().equals(username)) {
+                return true; // Username is already taken
+            }
+        }
+        return false; // Username is available
+	}
     
     
 }

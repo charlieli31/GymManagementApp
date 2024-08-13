@@ -16,9 +16,12 @@ public class ViewMembersGUI extends JFrame {
     private JButton btnDelete;
     private JList<Member> membersList;
     private MemberBook memberBook;
+    private TrainerBook trainerBook; // modified
 
-    public ViewMembersGUI(MemberBook memberBook) {
+    // pass trainerBook
+    public ViewMembersGUI(MemberBook memberBook, TrainerBook trainerBook) {
         this.memberBook = memberBook;
+        this.trainerBook = trainerBook;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPane = new JPanel();
@@ -66,7 +69,8 @@ public class ViewMembersGUI extends JFrame {
     void btn_deleteMember_clk() {
         Member selectedMember = membersList.getSelectedValue();
         if (selectedMember != null) {
-            memberBook.deleteMember(selectedMember);
+        	// pass trainerBook
+            memberBook.deleteMember(selectedMember, trainerBook);
             // Refresh the page
             membersList.setListData(convertToJList(memberBook.getMemberBook()));
         } else {

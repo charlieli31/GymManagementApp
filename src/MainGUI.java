@@ -15,6 +15,7 @@ public class MainGUI extends JFrame {
 	private JButton btnmember;
 	private JButton btnBusinessAnalyst;
 	private JLabel lbltitle;
+	private TrainerBook trainerBook; // modified
 	
 
 //	/**
@@ -33,7 +34,8 @@ public class MainGUI extends JFrame {
 		btnadmin = new JButton("Admin");
 		btnadmin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btn_Admin_clk(memberBook);
+				// modified to pass trainerBook
+				btn_Admin_clk(memberBook, trainerBook);
 			}
 		});
 		btnadmin.setBounds(165, 49, 117, 29);
@@ -68,14 +70,14 @@ public class MainGUI extends JFrame {
 		
 	}
 	
-	void btn_Admin_clk(MemberBook memberBook) {
-		AdminGUI aGUI = new AdminGUI(memberBook);
+	// modified to pass trainerBook
+	void btn_Admin_clk(MemberBook memberBook, TrainerBook trainerBook) {
+		// pass trainerBook
+		AdminGUI aGUI = new AdminGUI(memberBook, trainerBook);
 		aGUI.setVisible(true);
 	}
 	
 	void btn_Member_clk(MemberBook memberBook, TrainerBook trainerBook) {
-		//System.out.println(memberBook.getMemberBook().get(0).getFname());
-		//replace memberBook.getMemberBook().get(0) with member login
 		LoginGUI lGUI = new LoginGUI(memberBook, trainerBook);
 		lGUI.setVisible(true);
 	}

@@ -106,6 +106,12 @@ public class RegisterMemberGUI extends JFrame {
         String fname = txtFname.getText();
         String lname = txtLname.getText();
         String phone = txtPhone.getText();
+        
+        if (memberBook.isUsernameTaken(username)) {
+            JOptionPane.showMessageDialog(RegisterMemberGUI.this, "Username is already taken. Please enter another one.");
+            return;
+        }
+        
         if (!fname.isEmpty() && !lname.isEmpty() && !phone.isEmpty() && !username.isEmpty() && !password.isEmpty()) {
             Member newMember = new Member(fname, lname, phone, username, password);
             memberBook.addMember(newMember);

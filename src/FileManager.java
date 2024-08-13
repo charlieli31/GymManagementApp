@@ -38,7 +38,6 @@ public class FileManager {
            // e.printStackTrace();
         	return members;
         }
-      //  return members;
     }
     
     
@@ -47,7 +46,7 @@ public class FileManager {
     	ObjectInputStream ois = new ObjectInputStream(fis);
     	ArrayList<Trainer> trainers = (ArrayList<Trainer>) ois.readObject();
         return trainers;
-        } 
+    } 
     
     public static void saveMembershipFee(int membershipFee) {
         try (FileOutputStream fos = new FileOutputStream("membershipFee.bin");

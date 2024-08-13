@@ -12,9 +12,12 @@ public class AdminGUI extends JFrame {
     private JButton btnViewMember;
     private JButton btnBack;
     private MemberBook memberBook;
+    private TrainerBook trainerBook;
 
-    public AdminGUI(MemberBook memberBook) {
+    // pass memberBook and trainerBook
+    public AdminGUI(MemberBook memberBook, TrainerBook trainerBook) {
         this.memberBook = memberBook;
+        this.trainerBook = trainerBook; // modified to initialize
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPane = new JPanel();
@@ -51,13 +54,15 @@ public class AdminGUI extends JFrame {
         contentPane.add(btnBack);
     }
 
-    void btn_registerMember_clk() {
+    private void btn_registerMember_clk() {
+    	// pass memberBook
         RegisterMemberGUI rmGUI = new RegisterMemberGUI(memberBook);
         rmGUI.setVisible(true);
     }
 
-    void btn_viewMember_clk() {
-        ViewMembersGUI vmGUI = new ViewMembersGUI(memberBook);
+    private void btn_viewMember_clk() {
+    	// pass memberBook and trainerBook
+        ViewMembersGUI vmGUI = new ViewMembersGUI(memberBook, trainerBook);
         vmGUI.setVisible(true);
     }
 }
