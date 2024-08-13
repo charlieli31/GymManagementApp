@@ -12,39 +12,42 @@ public class Member extends User implements Serializable{
 	private String password;
 	private int sessionFee = 0;
 
-	// Constructor
-	
-	// No-argument constructor
+	static {
+        membershipFee = FileManager.loadMembershipFee(); // Load the membership fee at startup
+    }
+
+    // Constructors
     public Member() {
         super();
-        sessions = new ArrayList<Session>();
-        Member.membershipFee += 25;
+        sessions = new ArrayList<>();
+        membershipFee += 25;
+        FileManager.saveMembershipFee(membershipFee); // Save the fee after adding a new member
     }
-    
-	public Member(String fname, String lname) {
-		super(fname, lname);
-		sessions = new ArrayList<Session>();
-		Member.membershipFee += 25;
-	}
 
-	public Member(String fname, String lname, String phone) {
-		super(fname, lname);
-		this.phone = phone;
-		sessions = new ArrayList<Session>();
-		Member.membershipFee += 25;
-	}
-	
-	
+    public Member(String fname, String lname) {
+        super(fname, lname);
+        sessions = new ArrayList<>();
+        membershipFee += 25;
+        FileManager.saveMembershipFee(membershipFee);
+    }
 
-	public Member(String fname, String lname, String phone, String username, String password) {
-		super(fname, lname);
-		this.phone = phone;
-		this.sessions = new ArrayList<Session>();
-		this.username = username;
-		this.password = password;
-		Member.membershipFee += 25;
-	}
+    public Member(String fname, String lname, String phone) {
+        super(fname, lname);
+        this.phone = phone;
+        sessions = new ArrayList<>();
+        membershipFee += 25;
+        FileManager.saveMembershipFee(membershipFee);
+    }
 
+    public Member(String fname, String lname, String phone, String username, String password) {
+        super(fname, lname);
+        this.phone = phone;
+        this.sessions = new ArrayList<>();
+        this.username = username;
+        this.password = password;
+        membershipFee += 25;
+        FileManager.saveMembershipFee(membershipFee);
+    }
 	// Getters and Setters
 	public String getPhone() {
 		return phone;

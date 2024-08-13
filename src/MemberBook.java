@@ -30,6 +30,7 @@ public class MemberBook implements Serializable {
     public void addMember(Member member) {
         memberBook.add(member);
         FileManager.saveMembersToFile(memberBook);
+        FileManager.saveMembershipFee(Member.getMembershipFee()); 
     }
 
     public void editMember(Member member, String username, String password, String newFname, String newLname, String phone) {

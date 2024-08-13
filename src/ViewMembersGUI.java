@@ -67,6 +67,7 @@ public class ViewMembersGUI extends JFrame {
         Member selectedMember = membersList.getSelectedValue();
         if (selectedMember != null) {
             memberBook.deleteMember(selectedMember);
+            // Refresh the page
             membersList.setListData(convertToJList(memberBook.getMemberBook()));
         } else {
             JOptionPane.showMessageDialog(ViewMembersGUI.this, "Please select a member to delete.");

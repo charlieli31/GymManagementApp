@@ -48,8 +48,30 @@ public class FileManager {
     	ArrayList<Trainer> trainers = (ArrayList<Trainer>) ois.readObject();
         return trainers;
         } 
-  
+    
+    public static void saveMembershipFee(int membershipFee) {
+        try (FileOutputStream fos = new FileOutputStream("membershipFee.bin");
+        	 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeInt(membershipFee);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    public static int loadMembershipFee() {
+        int fee = 0;
+        try (FileInputStream fis = new FileInputStream("membershipFee.bin");
+        	 ObjectInputStream ois = new ObjectInputStream(fis)) {
+            fee = ois.readInt();
+        } catch (IOException e) {
+            // If the file doesn't exist or there's an error, assume 0
+            fee = 0;
+        }
+        return fee;
+    }
+  
+
+}
     
     
 
