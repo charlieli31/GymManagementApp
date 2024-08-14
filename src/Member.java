@@ -95,6 +95,11 @@ public class Member extends User implements Serializable{
 		this.sessionFee += 50;
 	}
 	
+	// refund session fee by $50
+	public void refundSessionFee() {
+		this.sessionFee -= 50;
+	}
+	
 	// Override toString to display member information
     @Override
     public String toString() {

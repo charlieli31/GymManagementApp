@@ -114,6 +114,9 @@ public class ViewRegisteredSessionsGUI extends JFrame {
 		if (session != null) {
 			activeMember.getSessions().remove(session);
 			session.getTrainer().getSessions().add(session);
+			
+			// refund $50 backt to the member
+			activeMember.refundSessionFee();
 	
 			FileManager.saveMembersToFile(memberBook.getMemberBook());
 			FileManager.saveTrainersToFile(trainerBook.getTrainers());

@@ -37,8 +37,8 @@ public class FileManager {
             return members;
         } 
         catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error loading members from file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
+//            JOptionPane.showMessageDialog(null, "Error loading members from file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+//            e.printStackTrace();
         	return members;
         }
     }
