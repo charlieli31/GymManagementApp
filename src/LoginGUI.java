@@ -60,7 +60,7 @@ public class LoginGUI extends JFrame {
 		btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                btn_login_clk();
+                btn_login_clk(txtUsername.getText(), txtPassword.getText());
             }
         });
 		btnLogin.setBounds(87, 191, 117, 29);
@@ -76,9 +76,8 @@ public class LoginGUI extends JFrame {
 		contentPane.add(btnCancel);
 	}
 
-	private void btn_login_clk() {
-	    String username = txtUsername.getText();
-	    String password = txtPassword.getText();
+	private void btn_login_clk(String username, String password) {
+	    
 	    
 	    if (!username.isEmpty() && !password.isEmpty()) {
 	        boolean found = false;  

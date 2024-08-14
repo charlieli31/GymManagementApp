@@ -15,7 +15,7 @@ import javax.swing.JButton;
 public class BrowseTrainersGUI extends JFrame {
 
 	private JPanel contentPane;
-	private JList list;
+	private JList trainersList;
 	private JButton btnViewTimes;
 	private JButton btnCancel;
 	private Member activeMember;
@@ -38,9 +38,9 @@ public class BrowseTrainersGUI extends JFrame {
 		contentPane.setLayout(null);
 		
 		// Trainers List
-		list = new JList<>(convertToJList(trainerBook.getTrainers()));
-		list.setBounds(75,33,287,178);
-		contentPane.add(list);
+		trainersList = new JList<>(convertToJList(trainerBook.getTrainers()));
+		trainersList.setBounds(75,33,287,178);
+		contentPane.add(trainersList);
 		
 		// View times button
 		btnViewTimes = new JButton("View Times");
@@ -69,7 +69,7 @@ public class BrowseTrainersGUI extends JFrame {
 
 	// click View Times
 	private void btn_viewTimes_clk() {
-		Trainer selectedTrainer = (Trainer) list.getSelectedValue();
+		Trainer selectedTrainer = (Trainer) trainersList.getSelectedValue();
 		if (selectedTrainer != null) {
 			BookSessionGUI bsGUI = new BookSessionGUI(memberBook,trainerBook, activeMember, selectedTrainer);
 			bsGUI.setVisible(true);
