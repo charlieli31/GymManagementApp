@@ -90,22 +90,28 @@ public class RescheduleSessionGUI extends JFrame {
 	// click reschedule
 	private void btn_reschedule_clk() {
 		
+		Session selectedTime = (Session)times.getSelectedValue();
 		
-		// deleting the original session
-		activeMember.getSessions().remove(session);
-		trainer.getSessions().add(session);
-		
-		// adding the new session
-		activeMember.getSessions().add((Session)times.getSelectedValue());
-		trainer.getSessions().remove((Session)times.getSelectedValue());
-		
-		// save data
-		FileManager.saveMembersToFile(memberBook.getMemberBook());
-		FileManager.saveTrainersToFile(trainerBook.getTrainers());
-		
-		// show success message and close the window
-        JOptionPane.showMessageDialog(this, "Session rescheduled successfully.");
-        dispose();
+		if (selectedTime != null) {
+			// deleting the original session
+			activeMember.getSessions().remove(session);
+			trainer.getSessions().add(session);
+			
+			// adding the new session
+			activeMember.getSessions().add(selectedTime);
+			trainer.getSessions().remove(selectedTime);
+			
+			// save data
+			FileManager.saveMembersToFile(memberBook.getMemberBook());
+			FileManager.saveTrainersToFile(trainerBook.getTrainers());
+			
+			// show success message and close the window
+	        JOptionPane.showMessageDialog(this, "Session rescheduled successfully.");
+	        dispose();
+		}else {
+			// handle the case if the user did not select a session
+			JOptionPane.showMessageDialog(RescheduleSessionGUI.this, "No session selected.");
+		}
 	}
 	
 }

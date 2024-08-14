@@ -88,7 +88,8 @@ public class BusinessAnalystGUI extends JFrame {
 	// click Analyze Total Revenue
 	private void btn_analyze_clk() {
 		// Get Membership Revenue
-		txtMembership.setText(Integer.toString(Member.getMembershipFee()));
+		int membershipFee = Member.getMembershipFee();
+		txtMembership.setText(Integer.toString(membershipFee));
 		// Get Session Revenue
 		int totalSessionFee = 0;
 		int totalRevenue = 0;
@@ -97,7 +98,7 @@ public class BusinessAnalystGUI extends JFrame {
 		}
 		txtSession.setText(Integer.toString(totalSessionFee));
 		// Get total revenue
-		totalRevenue = Member.getMembershipFee() + totalSessionFee;
+		totalRevenue = membershipFee + totalSessionFee;
 		txtTotal.setText(Integer.toString(totalRevenue));
 	}
 

@@ -41,13 +41,11 @@ public class ViewRegisteredSessionsGUI extends JFrame {
 
 		btnReschedule = new JButton("Reschedule");
 		btnReschedule.setBounds(37, 186, 115, 29);
-		//btnReschedule.setBounds(100, 100, 450, 300);
 		contentPane.add(btnReschedule);
 
 	
 		btnCancel = new JButton("Cancel");
 		btnCancel.setBounds(334, 186, 86, 29);
-		//btnCancel.setBounds(100, 100, 450, 300);
 		contentPane.add(btnCancel);
 
 		
@@ -114,7 +112,7 @@ public class ViewRegisteredSessionsGUI extends JFrame {
 	private void btn_cancelSession_clk() {
 		Session  session = (Session) sessions.getSelectedValue();
 		if (session != null) {
-			activeMember.getSessions().remove(sessions.getSelectedValue());
+			activeMember.getSessions().remove(session);
 			session.getTrainer().getSessions().add(session);
 	
 			FileManager.saveMembersToFile(memberBook.getMemberBook());
